@@ -23,7 +23,7 @@ namespace ShopInventoryRestAPI.Controllers
             return await _context.Items.ToListAsync();
         }
 
-        [HttpGet("Id")]
+        [HttpGet("Details/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             Item item = await _context.Items.FindAsync(id);
@@ -38,7 +38,7 @@ namespace ShopInventoryRestAPI.Controllers
             return CreatedAtAction(nameof(Create), item);
         }
 
-        [HttpPut("Update")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> Update(int id, Item item)
         {
             if (id != item.Id)
@@ -50,7 +50,7 @@ namespace ShopInventoryRestAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete("Delete")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var item = await _context.Items.FindAsync(id);
